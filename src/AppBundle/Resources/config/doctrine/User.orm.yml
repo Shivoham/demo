@@ -1,0 +1,20 @@
+AppBundle\Entity\User:
+    type: entity
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+        password:
+            type: string
+        roles:
+            type: simple_array
+
+    oneToMany:
+        products:
+            targetEntity: AppBundle\Entity\Product
+            mappedBy: owner

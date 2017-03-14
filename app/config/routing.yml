@@ -1,0 +1,11 @@
+app:
+    resource: '@AppBundle/Resources/config/routing.yml'
+    type: yaml
+
+login:
+    path: /login
+    defaults:
+        _controller: 'AppBundle:Security:login'
+
+logout:
+    path: /logout

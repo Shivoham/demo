@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<h1>Products</h1>
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Reference</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+</thead>
+{% for product in products %}
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.reference }}</td>
+        <td>{{ product.name }}</td>
+        <td>
+            <a href="{{ path('admin_edit', {id: product.id}) }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

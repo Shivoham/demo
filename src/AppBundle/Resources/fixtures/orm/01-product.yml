@@ -1,0 +1,16 @@
+AppBundle\Entity\Product:
+    serge_product:
+        name: <sentence(3, false)>
+        reference: <isbn10()>
+        owner: '@serge'
+        description: <text()>
+    aaon_product:
+        name: <sentence(3, false)>
+        reference: <isbn10()>
+        owner: '@aaron'
+        description: <text()>
+    product_{1..10}:
+        name: <sentence(3, false)>
+        reference: <isbn10()>
+        owner: '@admin_<current()>'
+        description: <text()>

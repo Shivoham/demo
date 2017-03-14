@@ -1,0 +1,23 @@
+AppBundle\Entity\Product:
+    type: entity
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+
+        reference:
+            type: string
+
+        description:
+            type: text
+
+    manyToOne:
+        owner:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: products

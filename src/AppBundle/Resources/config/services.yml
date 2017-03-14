@@ -1,0 +1,5 @@
+services:
+    app.security.voter.edit_product:
+        class: AppBundle\Security\Voter\EditProduct
+        tags:
+            - { name: security.voter }
