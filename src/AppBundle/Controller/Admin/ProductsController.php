@@ -30,10 +30,6 @@ class ProductsController extends Controller
             ->find($id)
         ;
 
-        if (false === $this->isGranted('EDIT', $product)) {
-            throw $this->createNotFoundException();
-        }
-
         $form = $this->createForm(ProductType::class, $product);
 
         return $this->render('AppBundle:Admin/Products:edit.html.twig', [

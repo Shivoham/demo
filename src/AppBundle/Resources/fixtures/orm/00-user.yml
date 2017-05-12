@@ -9,6 +9,6 @@ AppBundle\Entity\User:
         plainPassword: aaron
 
     admin_{1..10}:
-        email: '<current()>@knplabs.com'
+        email: '<email()>'
         roles: ['ROLE_ADMIN']
         plainPassword: <current()>
