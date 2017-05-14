@@ -15,11 +15,11 @@
 {% for product in products %}
     <tr>
         <td>{{ product.id }}</td>
-        <td>{{ product.reference }}</td>
-        <td>{{ product.name }}</td>
+        <td><a href="#">{{ product.reference }}</a></td>
+        <td>{{ product.name|capitalize }}</td>
         <td>{{ product.owner.username }}</td>
         <td>
-            <a href="{{ path('admin_edit', {id: product.id}) }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit</a>
+            <a href="{{ path('admin_products_edit', {id: product.id}) }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit</a>
         </td>
     </tr>
 {% endfor %}

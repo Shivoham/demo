@@ -1,9 +1,9 @@
-admin_index:
-    path: /admin
+admin_products_index:
+    path: /admin/products
     defaults:
         _controller: 'AppBundle:Admin/Products:index'
 
-admin_edit:
+admin_products_edit:
     path: /admin/products/{id}
     defaults:
         _controller: 'AppBundle:Admin/Products:edit'
