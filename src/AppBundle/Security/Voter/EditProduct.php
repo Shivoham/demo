@@ -2,34 +2,31 @@
 
 namespace AppBundle\Security\Voter;
 
-use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\User;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-class EditProduct extends Voter
+class EditProduct implements VoterInterface
 {
-    protected function supports($attribute, $subject)
+    public function vote(TokenInterface $token, $subject, array $attributes)
     {
-        if ('EDIT' !== $attribute) {
-            return false;
+        if (!in_array('EDIT', $attributes)) {
+            return self::ACCESS_ABSTAIN;
         }
 
         if (!$subject instanceof Product) {
-            return false;
+            return self::ACCESS_ABSTAIN;
         }
 
-        return true;
-    }
-
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
-    {
-        $user = $token->getUser();
-
-        if (!$user instanceof User) {
-            return false;
+        if (null === $user = $token->getUser()) {
+            return self::ACCESS_DENIED;
         }
 
-        return $subject->getOwner() === $user;
+        if ($subject->getOwner() !== $user) {
+            return self::ACCESS_DENIED;
+        }
+
+        return self::ACCESS_GRANTED;
     }
 }

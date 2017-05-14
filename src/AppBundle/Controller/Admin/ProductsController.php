@@ -30,6 +30,12 @@ class ProductsController extends Controller
             ->find($id)
         ;
 
+        if (false === $this->isGranted('EDIT', $product)) {
+            $this->addFlash('danger', 'Pas de droits, pas de chocolats.');
+
+            return $this->redirectToRoute('admin_products_index');
+        }
+
         $form = $this->createForm(ProductType::class, $product);
 
         return $this->render('AppBundle:Admin/Products:edit.html.twig', [
