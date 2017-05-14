@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-<h1>Products</h1>
+<h2>Administration > Products</h2>
 <table class="table table-striped">
 <thead>
     <tr>
@@ -19,7 +19,16 @@
         <td>{{ product.name|capitalize }}</td>
         <td>{{ product.owner.username }}</td>
         <td>
-            <a href="{{ path('admin_products_edit', {id: product.id}) }}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit</a>
+            <a href="{{ path('admin_products_edit', {id: product.id}) }}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span></button>
+
+               <ul class="dropdown-menu">
+                <li><a href="#">Disable</a></li>
+                <li><a href="#">Synchronize</a></li>
+                <li><a href="#">Move</a></li>
+              </ul>
+            </div>
         </td>
     </tr>
 {% endfor %}
